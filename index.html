@@ -1,1 +1,838 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<meta name="ext-resource-dependency" content="./assets/icons/salad.png" data-resource-id="icon-salad">
+<meta name="ext-resource-dependency" content="./assets/icons/runner.png" data-resource-id="icon-runner">
+<meta name="ext-resource-dependency" content="./assets/icons/moon.png" data-resource-id="icon-moon">
+<meta name="ext-resource-dependency" content="./assets/icons/lotus.png" data-resource-id="icon-lotus">
+<meta name="ext-resource-dependency" content="./assets/icons/steth.png" data-resource-id="icon-steth">
+<meta name="ext-resource-dependency" content="./assets/icons/biceps.png" data-resource-id="icon-biceps">
+<meta name="ext-resource-dependency" content="./assets/icons/chart.png" data-resource-id="icon-chart">
+<meta name="ext-resource-dependency" content="./assets/icons/clip.png" data-resource-id="icon-clip">
+<meta name="ext-resource-dependency" content="./assets/icons/cart.png" data-resource-id="icon-cart">
+<meta name="ext-resource-dependency" content="./assets/icons/camera.png" data-resource-id="icon-camera">
+<meta name="ext-resource-dependency" content="./assets/icons/cal.png" data-resource-id="icon-cal">
+<meta name="ext-resource-dependency" content="./assets/icons/note.png" data-resource-id="icon-note">
+<meta name="ext-resource-dependency" content="./assets/icons/spark.png" data-resource-id="icon-spark">
+<meta name="ext-resource-dependency" content="./assets/icons/broccoli.png" data-resource-id="icon-broccoli">
+<meta name="ext-resource-dependency" content="./assets/icons/apple.png" data-resource-id="icon-apple">
+<meta name="ext-resource-dependency" content="./assets/icons/egg.png" data-resource-id="icon-egg">
+<meta name="ext-resource-dependency" content="./assets/icons/avocado.png" data-resource-id="icon-avocado">
+<meta name="ext-resource-dependency" content="./assets/icons/carrot.png" data-resource-id="icon-carrot">
+<meta name="ext-resource-dependency" content="./assets/icons/banana.png" data-resource-id="icon-banana">
+<meta name="ext-resource-dependency" content="./assets/icons/shoe.png" data-resource-id="icon-shoe">
+<meta name="ext-resource-dependency" content="./assets/icons/clock.png" data-resource-id="icon-clock">
+<meta name="ext-resource-dependency" content="./assets/icons/leafy.png" data-resource-id="icon-leafy">
+<meta name="ext-resource-dependency" content="./assets/icons/heart.png" data-resource-id="icon-heart">
+<meta name="ext-resource-dependency" content="./assets/icons/bulb.png" data-resource-id="icon-bulb">
+<meta name="ext-resource-dependency" content="./assets/icons/phone.png" data-resource-id="icon-phone">
+<meta name="ext-resource-dependency" content="./assets/icons/check.png" data-resource-id="icon-check">
+<meta name="ext-resource-dependency" content="./assets/icons/droplet.png" data-resource-id="icon-droplet">
+<meta name="ext-resource-dependency" content="./assets/icons/weary.png" data-resource-id="icon-weary">
+<meta name="ext-resource-dependency" content="./assets/icons/spiral.png" data-resource-id="icon-spiral">
+<meta name="ext-resource-dependency" content="./assets/icons/cool.png" data-resource-id="icon-cool">
+<meta name="ext-resource-dependency" content="./assets/icons/bowl.png" data-resource-id="icon-bowl">
+<meta name="ext-resource-dependency" content="./assets/icons/milk.png" data-resource-id="icon-milk">
+<meta name="ext-resource-dependency" content="./assets/icons/lemon.png" data-resource-id="icon-lemon">
+<meta name="ext-resource-dependency" content="./assets/icons/flatbread.png" data-resource-id="icon-flatbread">
+<meta name="ext-resource-dependency" content="./assets/icons/cucumber.png" data-resource-id="icon-cucumber">
+<meta name="ext-resource-dependency" content="./assets/icons/books.png" data-resource-id="icon-books">
+<meta name="ext-resource-dependency" content="./assets/icons/seedling.png" data-resource-id="icon-seedling">
+<meta name="ext-resource-dependency" content="./assets/icons/trophy.png" data-resource-id="icon-trophy">
+<meta name="ext-resource-dependency" content="./assets/icons/tea.png" data-resource-id="icon-tea">
+<meta name="ext-resource-dependency" content="./assets/icons/sun.png" data-resource-id="icon-sun">
+<meta name="ext-resource-dependency" content="./assets/icons/rocket.png" data-resource-id="icon-rocket">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#090C0B;color:#F2F7F3;font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#6EE7B7}
+a:hover{color:#FF8A3D}
+*{box-sizing:border-box}
+@keyframes floatY{0%,100%{transform:translateY(0) rotate(var(--r))}50%{transform:translateY(-22px) rotate(calc(var(--r) + 8deg))}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(110,231,183,0.55)}100%{box-shadow:0 0 0 34px rgba(110,231,183,0)}}
+@keyframes popIn{from{opacity:0;transform:translateY(16px) scale(.96)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important}html{scroll-behavior:auto}}
+</style>
+</helmet>
+<template id="__bundler_thumbnail" data-bg-color="#090C0B"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#090C0B"></rect><circle cx="50" cy="50" r="20" fill="#6EE7B7"></circle><circle cx="50" cy="50" r="8" fill="#FF8A3D"></circle></svg></template>
+
+<div style="font-family:'DM Sans',sans-serif;font-size:17px;line-height:1.6;background:#090C0B;color:#F2F7F3">
+
+<div style="position:fixed;top:0;left:0;right:0;height:3px;z-index:60;background:rgba(255,255,255,0.06)">
+  <div style="height:100%;width:{{ progressPct }}%;background:linear-gradient(90deg,#6EE7B7,#FF8A3D);box-shadow:0 0 12px rgba(110,231,183,0.7)"></div>
+</div>
+<sc-if value="{{ showHud }}">
+  <div style="position:fixed;top:16px;right:16px;z-index:55;display:flex;align-items:center;gap:12px;padding:8px 14px 8px 10px;background:rgba(9,12,11,0.85);backdrop-filter:blur(10px);border:1px solid rgba(110,231,183,0.25);border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#F2F7F3">
+    <span style="width:8px;height:8px;border-radius:50%;background:#6EE7B7;box-shadow:0 0 10px #6EE7B7"></span>
+    <span style="color:#C2D0C6">STAGE {{ stageNum }}/06</span><span>{{ stageName }}</span><span style="color:#6EE7B7">{{ progressPct }}%</span>
+  </div>
+</sc-if>
+
+<div style="background:#000;padding:10px 20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 18px;text-align:center">
+  <div style="font-size:14px;font-weight:600">Stop chasing random health tips. Start understanding how your habits work together.</div>
+  <sc-if value="{{ offerLive }}" hint-placeholder-val="{{ true }}"><div style="display:inline-flex;align-items:center;gap:8px;padding:4px 12px;border-radius:999px;background:#FF3D2E;color:#FFFFFF;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:0.06em">₹390 ENDS IN {{ timeShort }}</div></sc-if>
+  <a href="#vsl" style="display:inline-flex;align-items:center;min-height:34px;padding:4px 14px;border-radius:999px;border:1px solid #6EE7B7;color:#6EE7B7;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-decoration:none" style-hover="background:#6EE7B7;color:#000">▶ WATCH THE FREE 5-MIN VIDEO</a>
+</div>
+
+<!-- HERO -->
+<header data-stage="1" style="position:relative;overflow:hidden;padding:clamp(56px,11vw,96px) 20px clamp(48px,9vw,72px);background:radial-gradient(ellipse 55% 45% at 50% 42%,rgba(9,12,11,0.92),rgba(9,12,11,0) 75%),radial-gradient(ellipse 70% 50% at 50% 105%,rgba(110,231,183,0.22),transparent 70%),radial-gradient(ellipse 40% 40% at 90% 10%,rgba(255,138,61,0.14),transparent 70%),linear-gradient(rgba(110,231,183,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(110,231,183,0.05) 1px,transparent 1px),#090C0B;background-size:auto,auto,auto,56px 56px,56px 56px,auto">
+  {{ heroArt }}
+  <div style="position:relative;z-index:2;max-width:960px;margin:0 auto;text-align:center">
+    <div style="display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;background:rgba(9,12,11,0.7);border:1px solid rgba(255,255,255,0.14);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#C2D0C6"><span style="width:6px;height:6px;border-radius:50%;background:#FF8A3D"></span>A health &amp; lifestyle course by Lavish Pareek</div>
+    <h1 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(34px,6vw,80px);line-height:1.02;letter-spacing:-0.035em;margin:28px 0 0;text-wrap:balance;text-shadow:0 4px 30px rgba(0,0,0,0.6)">Belly fat. Low energy. “Borderline” reports.</h1>
+    <div style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(22px,3.2vw,40px);line-height:1.15;letter-spacing:-0.02em;margin-top:14px;color:#6EE7B7;text-wrap:balance">Stop chasing quick fixes. Fix the root.</div>
+    <p style="font-size:clamp(17px,1.6vw,20px);line-height:1.5;color:#E2EBE5;max-width:620px;margin:24px auto 0;text-wrap:pretty">One practical system for food, movement, sleep, stress and health checks — built for real Indian life.</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:22px">
+      <span style="padding:7px 14px;border-radius:999px;background:rgba(9,12,11,0.7);border:1px solid rgba(255,255,255,0.16);font-size:14px;font-weight:700">✕ No extreme diet</span>
+      <span style="padding:7px 14px;border-radius:999px;background:rgba(9,12,11,0.7);border:1px solid rgba(255,255,255,0.16);font-size:14px;font-weight:700">✕ No jargon</span>
+      <span style="padding:7px 14px;border-radius:999px;background:rgba(9,12,11,0.7);border:1px solid rgba(255,255,255,0.16);font-size:14px;font-weight:700">✕ No miracle cure</span>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:40px">
+      <dc-import name="PriceCta" deadline="{{ deadline }}" label="FIX THE ROOT NOW" dark="{{ true }}" tight="{{ true }}" expired="{{ offerExpired }}" on-buy="{{ buy }}" hint-size="100%,96px"></dc-import>
+      <a href="#vsl" style="display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 6px;color:#F2F7F3;font-weight:700;font-size:15px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.3)" style-hover="color:#6EE7B7">▶ Watch the free 5-minute video first</a>
+    </div>
+  </div>
+
+  <div id="vsl" style="position:relative;z-index:2;max-width:1100px;margin:clamp(40px,8vw,72px) auto 0;display:flex;flex-wrap:wrap;gap:16px;align-items:stretch;scroll-margin-top:32px">
+    <div style="flex:2 1 520px;min-width:0;max-width:100%;padding:1px;border-radius:24px;background:linear-gradient(140deg,rgba(110,231,183,0.8),rgba(110,231,183,0.05) 40%,rgba(255,138,61,0.6));box-shadow:0 40px 90px -30px rgba(110,231,183,0.4)">
+      <div style="aspect-ratio:16/9;border-radius:23px;background:radial-gradient(ellipse at center,#14221C,#0A110E);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;position:relative;overflow:hidden">
+        <div style="position:absolute;top:16px;left:16px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#C2D0C6;display:flex;align-items:center;gap:8px"><span style="width:7px;height:7px;border-radius:50%;background:#FF5A3D"></span>FREE VIDEO · 4–5 MIN</div>
+        {{ playButton }}
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#9FB0A5;letter-spacing:0.08em">[EMBED THE VSL HERE]</div>
+      </div>
+    </div>
+    <div style="flex:1 1 280px;min-width:0;padding:28px;border-radius:24px;background:#0B100E;border:1px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;gap:18px">
+      <div style="font-family:'Unbounded',sans-serif;font-size:18px;line-height:1.3;font-weight:500">In 5 minutes, you’ll see:</div>
+      <sc-for list="{{ vslPoints }}" as="p">
+        <div style="display:flex;gap:14px;align-items:center"><div role="img" aria-hidden="true" style="width:44px;height:44px;flex:none;background:url({{ p.icon }}) center/contain no-repeat"></div><span style="font-size:16px;line-height:1.35;font-weight:600">{{ p.t }}</span></div>
+      </sc-for>
+    </div>
+  </div>
+</header>
+
+<div style="background:#0B100E;border-top:1px solid rgba(110,231,183,0.12);border-bottom:1px solid rgba(110,231,183,0.12);overflow:hidden;padding:16px 0">{{ marquee }}</div>
+
+<!-- NOISE -->
+<section data-stage="1" style="padding:clamp(64px,12vw,104px) 20px;background:#0B100E">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#FF8A3D">01 — THE NOISE</div>
+    <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(28px,4vw,52px);line-height:1.08;letter-spacing:-0.03em;margin:16px 0 0;max-width:820px;text-wrap:balance">You don’t need more health advice.</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:32px">
+      <sc-for list="{{ adviceQuotes }}" as="q" hint-placeholder-count="7"><span style="font-size:17px;font-weight:600;padding:10px 18px;background:rgba(255,255,255,0.05);border:1px dashed rgba(255,255,255,0.22);border-radius:999px;color:#C2D0C6;text-decoration:line-through;text-decoration-color:#FF8A3D;text-decoration-thickness:2px;transform:rotate({{ q.r }}deg)">{{ q.t }}</span></sc-for>
+    </div>
+    <p style="margin:48px 0 0;font-family:'Unbounded',sans-serif;font-weight:400;font-size:clamp(20px,2.6vw,32px);line-height:1.3;letter-spacing:-0.01em;max-width:860px">Nobody showed you <span style="color:#6EE7B7">how the pieces fit together.</span></p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:12px;margin-top:40px">
+      <sc-for list="{{ youMayKnow }}" as="k">
+        <div style="padding:24px;border-radius:20px;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;gap:14px">
+          <div role="img" aria-hidden="true" style="width:56px;height:56px;background:url({{ k.icon }}) center/contain no-repeat"></div>
+          <div style="font-size:15px;color:#C2D0C6">{{ k.a }}</div>
+          <div style="font-size:17px;font-weight:700;line-height:1.35">{{ k.b }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <dc-import name="PriceCta" deadline="{{ deadline }}" label="STOP GUESSING — START HERE" dark="{{ true }}" expired="{{ offerExpired }}" on-buy="{{ buy }}" hint-size="100%,96px"></dc-import>
+  </div>
+</section>
+
+<!-- SIGNAL CHECK -->
+<section data-stage="2" style="padding:clamp(64px,12vw,104px) 20px;background:#0C1210">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px 40px">
+      <div style="max-width:620px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#FF8A3D">02 — SIGNAL CHECK</div>
+        <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(28px,4vw,52px);line-height:1.08;letter-spacing:-0.03em;margin:16px 0 0">Sound familiar?</h2>
+        <p style="margin:12px 0 0;color:#C2D0C6">Tap everything that applies.</p>
+      </div>
+      <div style="width:min(100%,300px);padding:20px 22px;border-radius:20px;background:rgba(110,231,183,0.07);border:1px solid rgba(110,231,183,0.3)">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#C2D0C6">SIGNALS</div>
+            <div style="font-family:'Unbounded',sans-serif;font-size:40px;line-height:1.1;color:#6EE7B7">{{ checkedCount }}<span style="color:#9FB0A5;font-size:18px"> /14</span></div>
+          </div>
+          <div role="img" aria-hidden="true" style="width:56px;height:56px;background:url({{ signalFace }}) center/contain no-repeat"></div>
+        </div>
+        <div style="height:5px;border-radius:3px;background:rgba(255,255,255,0.1);margin-top:12px;overflow:hidden"><div style="height:100%;width:{{ checkedPct }}%;background:linear-gradient(90deg,#6EE7B7,#FF8A3D);transition:width .3s"></div></div>
+        <div style="margin-top:12px;font-size:14px;line-height:1.4;font-weight:600">{{ signalMsg }}</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:40px">
+      <sc-for list="{{ pains }}" as="p" hint-placeholder-count="14">
+        <button onClick="{{ p.toggle }}" style="all:unset;cursor:pointer;display:inline-flex;gap:10px;align-items:center;padding:12px 18px;min-height:44px;box-sizing:border-box;border-radius:999px;background:{{ p.bg }};border:1px solid {{ p.border }};font-size:16px;font-weight:600;color:{{ p.color }};transition:all .2s" style-hover="border-color:#6EE7B7">
+          <span style="flex:none;width:20px;height:20px;border-radius:50%;border:1.5px solid {{ p.boxBorder }};background:{{ p.boxBg }};color:#090C0B;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800">{{ p.mark }}</span>{{ p.text }}
+        </button>
+      </sc-for>
+    </div>
+    <p style="margin:48px auto 0;max-width:680px;text-align:center;font-family:'Unbounded',sans-serif;font-weight:400;font-size:clamp(18px,2.2vw,24px);line-height:1.4;text-wrap:balance">It doesn’t mean you failed. It means you need <span style="color:#6EE7B7">a simpler system.</span></p>
+    <dc-import name="PriceCta" deadline="{{ deadline }}" label="BUILD MY PLAN" dark="{{ true }}" expired="{{ offerExpired }}" on-buy="{{ buy }}" hint-size="100%,96px"></dc-import>
+  </div>
+</section>
+
+<!-- ROOTS -->
+<section data-stage="3" style="padding:clamp(64px,12vw,104px) 20px;background:#0E1813">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#6EE7B7">03 — THE BIG IDEA</div>
+    <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(28px,4vw,52px);line-height:1.08;letter-spacing:-0.03em;margin:16px 0 0;max-width:860px;text-wrap:balance">Most health problems don’t start with pain.</h2>
+    <p style="margin:18px 0 0;color:#E2EBE5;font-size:18px;max-width:640px">They build quietly — habits, age, genes and environment, working together for years.</p>
+
+    <div style="margin-top:clamp(32px,6vw,48px);border-radius:clamp(20px,4vw,28px);border:1px solid rgba(110,231,183,0.2);overflow:hidden;background:linear-gradient(180deg,rgba(255,138,61,0.05) 0%,rgba(255,138,61,0.02) 30%,rgba(110,231,183,0.08) 30%,rgba(4,10,7,0.7) 100%)">
+      <div style="padding:28px clamp(20px,4vw,40px)">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#FFB98A">WHAT YOU SEE</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+          <sc-for list="{{ symptoms }}" as="s" hint-placeholder-count="6"><span style="padding:8px 16px;border-radius:999px;background:rgba(255,138,61,0.14);border:1px solid rgba(255,138,61,0.45);color:#FFD9C2;font-size:15px;font-weight:600">{{ s }}</span></sc-for>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:0 clamp(20px,4vw,40px)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#6EE7B7">SURFACE</span>
+        <span style="flex:1;height:1px;background:linear-gradient(90deg,#6EE7B7,rgba(110,231,183,0.1))"></span>
+      </div>
+      <div style="padding:28px clamp(20px,4vw,40px) 36px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#6EE7B7">WHAT GROWS IT · TAP A ROOT</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:10px;margin-top:16px">
+          <sc-for list="{{ fiveAreas }}" as="a">
+            <button onClick="{{ a.select }}" style="all:unset;cursor:pointer;box-sizing:border-box;padding:20px;border-radius:20px;background:{{ a.bg }};border:1px solid {{ a.border }};box-shadow:{{ a.glow }};display:flex;flex-direction:column;align-items:flex-start;gap:12px;min-height:44px;transition:all .25s">
+              <div role="img" aria-hidden="true" style="width:{{ a.size }}px;height:{{ a.size }}px;transition:all .25s;background:url({{ a.icon }}) center/contain no-repeat"></div>
+              <span style="font-family:'Unbounded',sans-serif;font-size:16px;font-weight:500;color:#F2F7F3">{{ a.title }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="margin-top:14px;padding:20px 24px;border-radius:18px;background:rgba(110,231,183,0.1);border:1px solid rgba(110,231,183,0.35);display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between">
+          <div style="font-size:17px;font-weight:600">{{ activeArea.text }}</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6EE7B7">{{ activeArea.mods }}</div>
+        </div>
+      </div>
+    </div>
+    <p style="margin:40px auto 0;text-align:center;font-size:18px;font-weight:700;max-width:640px;text-wrap:balance">You don’t need to be perfect in all five. Pick one. Start small. Repeat.</p>
+    <dc-import name="PriceCta" deadline="{{ deadline }}" label="GET THE 5-PART SYSTEM" dark="{{ true }}" expired="{{ offerExpired }}" on-buy="{{ buy }}" hint-size="100%,96px"></dc-import>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section data-stage="3" style="padding:clamp(64px,12vw,104px) 20px;background:#10211A">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#6EE7B7">04 — WHAT YOU UNLOCK</div>
+    <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(28px,4vw,52px);line-height:1.08;letter-spacing:-0.03em;margin:16px 0 0;max-width:860px;text-wrap:balance">Confusion out. A personal action plan in.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;margin-top:40px">
+      <sc-for list="{{ skills }}" as="k">
+        <div style="display:flex;gap:18px;align-items:center;padding:20px 22px;border-radius:20px;background:rgba(255,255,255,0.04);border:1px solid rgba(110,231,183,0.16)">
+          <div role="img" aria-hidden="true" style="width:56px;height:56px;flex:none;background:url({{ k.icon }}) center/contain no-repeat"></div>
+          <span style="font-size:17px;font-weight:700;line-height:1.35">{{ k.t }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:16px">
+      <button onClick="{{ toggleOutcomes }}" style="all:unset;cursor:pointer;min-height:44px;display:inline-flex;align-items:center;gap:10px;padding:0 18px;border-radius:999px;border:1px solid rgba(110,231,183,0.4);color:#6EE7B7;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em">{{ outcomesBtn }}</button>
+    </div>
+    <sc-if value="{{ outcomesOpen }}">
+      <ol style="list-style:none;padding:0;margin:20px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:4px 32px">
+        <sc-for list="{{ outcomes }}" as="o"><li style="display:flex;gap:14px;padding:10px 0;border-top:1px solid rgba(255,255,255,0.08);font-size:15px;color:#E2EBE5"><span style="flex:none;font-family:'JetBrains Mono',monospace;font-size:11px;color:#6EE7B7;padding-top:3px">{{ o.n }}</span><span>{{ o.text }}</span></li></sc-for>
+      </ol>
+    </sc-if>
+    <div style="margin-top:32px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:18px 22px;border-radius:18px;border:1px solid rgba(255,138,61,0.5);background:rgba(255,138,61,0.08)">
+      <img src="./assets/icons/steth.png" alt="" style="width:36px;height:36px">
+      <span style="font-weight:700">This course will not diagnose you.</span>
+      <span style="color:#E2EBE5">It helps you ask your doctor better questions.</span>
+    </div>
+    <dc-import name="PriceCta" deadline="{{ deadline }}" label="GET MY ACTION PLAN" dark="{{ true }}" expired="{{ offerExpired }}" on-buy="{{ buy }}" hint-size="100%,96px"></dc-import>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section data-stage="4" id="journey" style="padding:clamp(72px,13vw,112px) 20px;background:radial-gradient(ellipse 60% 30% at 0% 0%,rgba(110,231,183,0.1),transparent 70%),#0F2219">
+  <div style="max-width:960px;margin:0 auto">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#6EE7B7">05 — YOUR JOURNEY AFTER YOU JOIN</div>
+    <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(28px,4vw,52px);line-height:1.08;letter-spacing:-0.03em;margin:16px 0 0;text-wrap:balance">14 steps. One path. Your plan at the end.</h2>
+    <p style="margin:14px 0 0;color:#C2D0C6">Scroll to walk it. Tap any step to peek inside.</p>
+
+    <div style="position:relative;margin-top:56px">
+      <div style="position:absolute;left:21px;top:0;bottom:0;width:2px;background:rgba(255,255,255,0.1)"></div>
+      <div style="position:absolute;left:21px;top:0;width:2px;height:{{ journeyFill }}%;background:linear-gradient(180deg,#6EE7B7,#6EE7B7 85%,#FF8A3D);box-shadow:0 0 14px rgba(110,231,183,0.8);transition:height .15s linear"></div>
+
+      <div data-node="start" style="position:relative;display:flex;gap:22px;align-items:center;padding-bottom:36px">
+        <span style="flex:none;width:44px;height:44px;border-radius:50%;background:#6EE7B7;box-shadow:0 0 0 6px rgba(110,231,183,0.15),0 0 30px rgba(110,231,183,0.6);display:flex;align-items:center;justify-content:center;position:relative"><img src="./assets/icons/seedling.png" alt="" style="width:28px;height:28px"></span>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#6EE7B7">DAY 0</div>
+          <div style="font-family:'Unbounded',sans-serif;font-size:18px;font-weight:500">You join. The path begins.</div>
+        </div>
+      </div>
+
+      <sc-for list="{{ stages }}" as="g">
+        <div style="position:relative;display:flex;align-items:center;gap:12px;padding:4px 0 12px 66px;flex-wrap:wrap">
+          <div role="img" aria-hidden="true" style="width:40px;height:40px;background:url({{ g.icon }}) center/contain no-repeat"></div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#6EE7B7">{{ g.label }}</div>
+        </div>
+        <sc-for list="{{ g.mods }}" as="m" hint-placeholder-count="4">
+          <div data-node="{{ m.num }}" style="position:relative;display:flex;gap:22px;padding:8px 0">
+            <span style="flex:none;margin-top:14px;width:44px;height:44px;border-radius:50%;background:{{ m.dotBg }};border:1.5px solid {{ m.dotBorder }};box-shadow:{{ m.dotGlow }};display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;color:{{ m.dotText }};position:relative;transition:all .35s">{{ m.num }}</span>
+            <div style="flex:1;min-width:0;border-radius:20px;background:{{ m.cardBg }};border:1px solid {{ m.cardBorder }};transition:all .35s">
+              <button onClick="{{ m.toggle }}" style="all:unset;cursor:pointer;box-sizing:border-box;width:100%;display:flex;gap:16px;align-items:center;justify-content:space-between;padding:20px 22px;min-height:44px">
+                <span style="font-family:'Unbounded',sans-serif;font-size:clamp(15px,1.7vw,19px);font-weight:500;line-height:1.3;color:#F2F7F3">{{ m.title }}</span>
+                <span style="flex:none;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,0.25);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;color:#6EE7B7">{{ m.sign }}</span>
+              </button>
+              <sc-if value="{{ m.open }}">
+                <div style="padding:0 22px 22px;display:flex;flex-direction:column;gap:14px">
+                  <div style="display:flex;flex-wrap:wrap;gap:8px">
+                    <sc-for list="{{ m.items }}" as="it"><span style="padding:7px 12px;border-radius:10px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);font-size:14px">{{ it }}</span></sc-for>
+                  </div>
+                  <div style="padding:12px 16px;border-radius:12px;background:rgba(110,231,183,0.1);border:1px solid rgba(110,231,183,0.3);font-size:15px;font-weight:600"><span style="color:#6EE7B7">→ </span>{{ m.outcome }}</div>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-for>
+        <div style="padding:0 0 44px clamp(0px,8vw,66px)">
+          <dc-import name="PriceCta" deadline="{{ deadline }}" label="{{ g.cta }}" dark="{{ true }}" expired="{{ offerExpired }}" on-buy="{{ buy }}" hint-size="100%,96px"></dc-import>
+        </div>
+      </sc-for>
+
+      <div data-node="end" style="position:relative;display:flex;gap:22px;align-items:center">
+        <span style="flex:none;width:44px;height:44px;border-radius:50%;background:{{ endDotBg }};box-shadow:{{ endDotGlow }};display:flex;align-items:center;justify-content:center;position:relative;transition:all .35s"><img src="./assets/icons/trophy.png" alt="" style="width:28px;height:28px"></span>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#FF8A3D">DAY 30</div>
+          <div style="font-family:'Unbounded',sans-serif;font-size:18px;font-weight:500">You finish with a written plan.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BONUS -->
+<section data-stage="4" style="padding:24px 16px clamp(64px,12vw,104px);background:#0F2219">
+  <div style="max-width:1100px;margin:0 auto;padding:1px;border-radius:32px;background:linear-gradient(135deg,#FF8A3D,rgba(255,138,61,0.1) 35%,rgba(110,231,183,0.1) 65%,#6EE7B7)">
+    <div style="position:relative;overflow:hidden;border-radius:31px;background:radial-gradient(ellipse 50% 60% at 100% 0%,rgba(255,138,61,0.16),transparent 70%),#0A1310;padding:clamp(28px,5vw,56px)">
+      <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between">
+        <div style="flex:1 1 420px;min-width:0">
+          <span style="display:inline-flex;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#090C0B;background:#FF8A3D;padding:6px 12px;border-radius:999px">FREE BONUS · INCLUDED</span>
+          <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(26px,3.6vw,46px);line-height:1.08;letter-spacing:-0.03em;margin:18px 0 0;text-wrap:balance">Lavish’s Secret Fat-to-Fit Video Series</h2>
+          <p style="margin:14px 0 0;color:#E2EBE5;font-size:18px;max-width:520px">Years of real gym lessons — so you skip the beginner mistakes.</p>
+        </div>
+        <div style="flex:0 1 auto;display:flex;gap:6px">{{ bonusArt }}</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:10px;margin-top:36px">
+        <sc-for list="{{ bonusItems }}" as="b" hint-placeholder-count="9"><div style="display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);font-size:15px;font-weight:600;line-height:1.4"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#FF8A3D;padding-top:3px">{{ b.n }}</span><span>{{ b.t }}</span></div></sc-for>
+      </div>
+      <p style="margin:18px 0 0;color:#C2D0C6;font-size:14px">No overnight transformation promises — just a shorter learning curve.</p>
+      <dc-import name="PriceCta" deadline="{{ deadline }}" label="UNLOCK COURSE + BONUS" dark="{{ true }}" expired="{{ offerExpired }}" on-buy="{{ buy }}" hint-size="100%,96px"></dc-import>
+    </div>
+  </div>
+</section>
+
+<!-- KIT -->
+<section data-stage="4" style="padding:clamp(64px,12vw,104px) 20px;background:#143026">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#6EE7B7">06 — YOUR KIT</div>
+    <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(28px,4vw,52px);line-height:1.08;letter-spacing:-0.03em;margin:16px 0 0;max-width:860px;text-wrap:balance">Everything you need. One package.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;margin-top:44px">
+      <sc-for list="{{ included }}" as="c">
+        <div style="border-radius:24px;background:rgba(255,255,255,0.05);border:1px solid rgba(110,231,183,0.18);padding:24px;display:flex;flex-direction:column;gap:14px;transition:all .25s" style-hover="border-color:#6EE7B7;background:rgba(110,231,183,0.08);transform:translateY(-4px)">
+          <div role="img" aria-hidden="true" style="width:64px;height:64px;background:url({{ c.icon }}) center/contain no-repeat"></div>
+          <div style="font-family:'Unbounded',sans-serif;font-size:17px;font-weight:500;line-height:1.3">{{ c.title }}</div>
+          <div style="font-size:15px;color:#E2EBE5">{{ c.text }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <dc-import name="PriceCta" deadline="{{ deadline }}" label="GIVE ME EVERYTHING" dark="{{ true }}" expired="{{ offerExpired }}" on-buy="{{ buy }}" hint-size="100%,96px"></dc-import>
+  </div>
+</section>
+
+<!-- SHIFT -->
+<section data-stage="5" style="padding:clamp(72px,13vw,112px) 20px;background:linear-gradient(180deg,#143026 0%,#3E7A62 40%,#B9DCC9 75%,#EEF3EE 100%)">
+  <div style="max-width:960px;margin:0 auto">
+    <div style="text-align:center">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#C9FBE4">07 — THE SHIFT</div>
+      <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(28px,4vw,52px);line-height:1.08;letter-spacing:-0.03em;margin:16px auto 0;max-width:780px;text-wrap:balance;color:#FFFFFF">Who you are before. Who you are after.</h2>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:32px">
+      <div style="display:flex;padding:5px;border-radius:999px;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.2)">
+        <button onClick="{{ showBefore }}" style="all:unset;cursor:pointer;min-height:44px;padding:0 28px;display:flex;align-items:center;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;background:{{ beforeTabBg }};color:{{ beforeTabColor }};transition:all .25s">BEFORE</button>
+        <button onClick="{{ showAfter }}" style="all:unset;cursor:pointer;min-height:44px;padding:0 28px;display:flex;align-items:center;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;background:{{ afterTabBg }};color:{{ afterTabColor }};transition:all .25s">AFTER</button>
+      </div>
+    </div>
+    <div style="margin-top:24px;border-radius:32px;padding:clamp(24px,4vw,44px);background:{{ baCardBg }};border:1px solid {{ baCardBorder }};box-shadow:{{ baCardGlow }};transition:background .5s, box-shadow .5s">
+      <div style="display:flex;align-items:center;gap:16px">
+        <div role="img" aria-hidden="true" style="width:64px;height:64px;background:url({{ baFace }}) center/contain no-repeat"></div>
+        <div style="font-family:'Unbounded',sans-serif;font-size:20px;font-weight:500;color:{{ baText }}">{{ baLabel }}</div>
+      </div>
+      <ul style="list-style:none;padding:0;margin:20px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));column-gap:32px">
+        <sc-for list="{{ baItems }}" as="b" hint-placeholder-count="8"><li style="display:flex;gap:14px;padding:14px 0;border-top:1px solid {{ baLine }};font-size:17px;font-weight:600;line-height:1.4;color:{{ baText }}"><span style="flex:none;color:{{ baMarkColor }};font-weight:800">{{ baMark }}</span><span>{{ b }}</span></li></sc-for>
+      </ul>
+      <div style="display:flex;justify-content:center;margin-top:20px">
+        <button onClick="{{ flipBA }}" style="all:unset;cursor:pointer;min-height:44px;padding:0 22px;border-radius:999px;border:1px solid {{ baMarkColor }};display:flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;color:{{ baMarkColor }}">{{ baFlipText }}</button>
+      </div>
+    </div>
+    <dc-import name="PriceCta" deadline="{{ deadline }}" label="MOVE ME TO CLARITY" dark="{{ false }}" expired="{{ offerExpired }}" on-buy="{{ buy }}" hint-size="100%,96px"></dc-import>
+  </div>
+</section>
+
+<!-- DIFFERENT -->
+<section data-stage="5" style="padding:clamp(64px,12vw,104px) 20px;background:#EEF3EE;color:#0E1A14">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#1F5A43">08 — WHY IT’S DIFFERENT</div>
+    <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(28px,4vw,52px);line-height:1.08;letter-spacing:-0.03em;margin:16px 0 0">Built for real life.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;margin-top:44px">
+      <sc-for list="{{ different }}" as="d">
+        <div style="border-radius:24px;background:#FFFFFF;border:1px solid #D5DDD5;padding:24px;display:flex;flex-direction:column;gap:14px;transition:all .25s" style-hover="border-color:#1F5A43;transform:translateY(-4px);box-shadow:0 24px 40px -24px rgba(31,90,67,0.5)">
+          <div role="img" aria-hidden="true" style="width:56px;height:56px;background:url({{ d.icon }}) center/contain no-repeat"></div>
+          <div style="font-family:'Unbounded',sans-serif;font-size:16px;font-weight:500;line-height:1.3">{{ d.title }}</div>
+          <div style="font-size:15px;color:#3A4A40">{{ d.text }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <dc-import name="PriceCta" deadline="{{ deadline }}" label="I WANT THE REAL-LIFE PLAN" dark="{{ false }}" expired="{{ offerExpired }}" on-buy="{{ buy }}" hint-size="100%,96px"></dc-import>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section data-stage="5" style="padding:clamp(64px,12vw,104px) 20px;background:#F6F3EA;color:#0E1A14">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#1F5A43">09 — IS THIS FOR YOU?</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:16px;margin-top:24px">
+      <div style="border-radius:28px;background:#FFFFFF;border:1px solid #D5DDD5;padding:clamp(24px,3vw,36px)">
+        <div style="display:flex;align-items:center;gap:14px"><img src="./assets/icons/check.png" alt="" style="width:44px;height:44px"><h3 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:22px;margin:0">Yes, if you…</h3></div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:20px">
+          <sc-for list="{{ forYou }}" as="f" hint-placeholder-count="8"><span style="padding:9px 14px;border-radius:999px;background:#E6F1EA;color:#0E1A14;font-size:15px;font-weight:600">{{ f }}</span></sc-for>
+        </div>
+      </div>
+      <div style="border-radius:28px;background:#FFFFFF;border:1px solid #D5DDD5;padding:clamp(24px,3vw,36px)">
+        <div style="display:flex;align-items:center;gap:14px"><img src="./assets/icons/x0.png" alt="" style="width:44px;height:44px"><h3 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:22px;margin:0">Not for you if you…</h3></div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:20px">
+          <sc-for list="{{ notFor }}" as="f" hint-placeholder-count="5"><span style="padding:9px 14px;border-radius:999px;background:#F7E6DC;color:#5A2410;font-size:15px;font-weight:600">{{ f }}</span></sc-for>
+        </div>
+        <div style="margin-top:20px;padding:16px 18px;border-radius:16px;background:#FFF4EC;border:1.5px solid #E0703A;font-size:15px;line-height:1.5"><strong style="color:#A33A12">⚠ Emergency?</strong> Chest pressure, one-sided weakness, trouble speaking, severe breathlessness or fainting — get urgent care now. Call 112.</div>
+      </div>
+    </div>
+    <dc-import name="PriceCta" deadline="{{ deadline }}" label="THIS IS FOR ME" dark="{{ false }}" expired="{{ offerExpired }}" on-buy="{{ buy }}" hint-size="100%,96px"></dc-import>
+  </div>
+</section>
+
+<!-- GUIDE -->
+<section data-stage="5" style="padding:clamp(64px,12vw,104px) 20px;background:#EEF3EE;color:#0E1A14">
+  <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:48px;align-items:center">
+    <div style="flex:1 1 300px;min-width:0;max-width:440px;padding:1px;border-radius:32px;background:linear-gradient(160deg,#6EE7B7,#D5DDD5 40%,#FF8A3D)">
+      <div style="aspect-ratio:4/5;border-radius:31px;overflow:hidden;background:#E3EAE3">
+        <image-slot id="lavish-portrait" shape="rounded" radius="31" placeholder="Drop Lavish’s portrait"></image-slot>
+      </div>
+    </div>
+    <div style="flex:1.3 1 400px;min-width:0">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#1F5A43">10 — YOUR GUIDE</div>
+      <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(28px,3.8vw,48px);line-height:1.08;letter-spacing:-0.03em;margin:16px 0 0">Hi, I’m Lavish Pareek.</h2>
+      <p style="margin:22px 0 0;font-size:19px;line-height:1.5;font-weight:600">Most people don’t lack health information. They lack a clear way to use it.</p>
+      <p style="margin:14px 0 0;color:#3A4A40">So I connected food, movement, sleep and stress into one plan for real life. No miracle cures. No ditching your doctor.</p>
+      <div style="display:flex;gap:14px;align-items:center;margin-top:20px;padding:16px 18px;border-radius:18px;background:#FFFFFF;border:1px solid #D5DDD5">
+        <img src="./assets/icons/biceps.png" alt="" style="width:44px;height:44px;flex:none">
+        <span style="font-size:15px;font-weight:600">Plus my free Fat-to-Fit videos — the gym lessons I wish I’d known as a beginner.</span>
+      </div>
+      <p style="margin:16px 0 0;padding:12px 14px;border:1px dashed #E0703A;border-radius:12px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#3A4A40">[Insert verified qualifications &amp; experience]</p>
+      <dc-import name="PriceCta" deadline="{{ deadline }}" label="LEARN WITH LAVISH" dark="{{ false }}" expired="{{ offerExpired }}" on-buy="{{ buy }}" hint-size="100%,96px"></dc-import>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section data-stage="5" style="padding:clamp(64px,12vw,104px) 20px;background:#F6F3EA;color:#0E1A14">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#1F5A43">11 — PROOF</div>
+    <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(28px,4vw,52px);line-height:1.08;letter-spacing:-0.03em;margin:16px 0 0">Real learners. Real words.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;margin-top:44px">
+      <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="4">
+        <figure style="margin:0;border-radius:24px;background:#FFFFFF;border:1px solid #D5DDD5;padding:24px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:48px;height:48px;border-radius:50%;overflow:hidden;flex:none;background:#E3EAE3"><image-slot id="{{ t.slot }}" shape="circle" placeholder="Photo"></image-slot></div>
+            <div><div style="font-weight:700;font-size:15px">[Learner’s name]</div><div style="font-size:13px;color:#3A4A40">[City]</div></div>
+          </div>
+          <span style="align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#1F5A43;padding:5px 10px;border-radius:999px;background:#E3EFE7">{{ t.tag }}</span>
+          <blockquote style="margin:0;font-size:15px;line-height:1.5;color:#3A4A40">“{{ t.text }}”</blockquote>
+        </figure>
+      </sc-for>
+    </div>
+    <p style="margin:16px 0 0;font-size:13px;color:#3A4A40">Individual experiences differ. Testimonials are not guaranteed medical outcomes.</p>
+  </div>
+</section>
+
+<!-- TRUST + FAQ -->
+<section data-stage="6" style="padding:clamp(64px,12vw,104px) 20px;background:#EEF3EE;color:#0E1A14">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:1px;background:#D5DDD5;border:1px solid #D5DDD5;border-radius:24px;overflow:hidden">
+      <sc-for list="{{ infoBar }}" as="i" hint-placeholder-count="6">
+        <div style="background:#FFFFFF;padding:18px 20px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#3A4A40">{{ i.k }}</div>
+          <div style="margin-top:4px;font-size:15px;font-weight:700">{{ i.v }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#1F5A43;margin-top:80px">12 — QUESTIONS</div>
+    <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(28px,4vw,52px);line-height:1.08;letter-spacing:-0.03em;margin:16px 0 0">Quick answers.</h2>
+    <div style="margin-top:36px;display:flex;flex-direction:column;gap:8px">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="17">
+        <div style="border-radius:18px;background:{{ f.bg }};border:1px solid {{ f.border }};transition:all .2s">
+          <button onClick="{{ f.toggle }}" style="all:unset;cursor:pointer;box-sizing:border-box;width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 20px;min-height:44px;font-size:17px;font-weight:700;line-height:1.35">
+            <span>{{ f.q }}</span><span style="flex:none;width:30px;height:30px;border-radius:50%;background:{{ f.signBg }};color:{{ f.signColor }};display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace">{{ f.sign }}</span>
+          </button>
+          <sc-if value="{{ f.open }}"><p style="margin:0;padding:0 clamp(20px,6vw,60px) 20px 20px;color:#2A3A30;font-size:16px;text-wrap:pretty">{{ f.a }}</p></sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <dc-import name="PriceCta" deadline="{{ deadline }}" label="I’M READY — JOIN NOW" dark="{{ false }}" expired="{{ offerExpired }}" on-buy="{{ buy }}" hint-size="100%,96px"></dc-import>
+  </div>
+</section>
+
+<!-- ONE STEP -->
+<section data-stage="6" style="padding:clamp(72px,13vw,112px) 20px;background:#F6F3EA;color:#0E1A14">
+  <div style="max-width:960px;margin:0 auto;text-align:center">
+    <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(30px,4.6vw,60px);line-height:1.04;letter-spacing:-0.035em;margin:0;text-wrap:balance">You don’t need to fix everything today.</h2>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:32px">
+      <span style="padding:9px 16px;border-radius:999px;background:#FFFFFF;border:1px solid #D5DDD5;font-size:15px;font-weight:600;color:#3A4A40;text-decoration:line-through;text-decoration-color:#E0703A;text-decoration-thickness:2px">Empty your kitchen</span>
+      <span style="padding:9px 16px;border-radius:999px;background:#FFFFFF;border:1px solid #D5DDD5;font-size:15px;font-weight:600;color:#3A4A40;text-decoration:line-through;text-decoration-color:#E0703A;text-decoration-thickness:2px">Join a gym tomorrow</span>
+      <span style="padding:9px 16px;border-radius:999px;background:#FFFFFF;border:1px solid #D5DDD5;font-size:15px;font-weight:600;color:#3A4A40;text-decoration:line-through;text-decoration-color:#E0703A;text-decoration-thickness:2px">Wake up at 5 a.m.</span>
+      <span style="padding:9px 16px;border-radius:999px;background:#FFFFFF;border:1px solid #D5DDD5;font-size:15px;font-weight:600;color:#3A4A40;text-decoration:line-through;text-decoration-color:#E0703A;text-decoration-thickness:2px">Become someone new in 7 days</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:10px;margin-top:36px;text-align:left">
+      <div style="padding:22px;border-radius:22px;background:#FFFFFF;border:1px solid #D5DDD5"><img src="./assets/icons/x1.png" alt="" style="width:40px;height:40px"><div style="margin-top:10px;font-weight:700;font-size:17px">Know where you are</div></div>
+      <div style="padding:22px;border-radius:22px;background:#FFFFFF;border:1px solid #D5DDD5"><img src="./assets/icons/bulb.png" alt="" style="width:40px;height:40px"><div style="margin-top:10px;font-weight:700;font-size:17px">Find what matters most</div></div>
+      <div style="padding:22px;border-radius:22px;background:#FFFFFF;border:1px solid #D5DDD5"><img src="./assets/icons/seedling.png" alt="" style="width:40px;height:40px"><div style="margin-top:10px;font-weight:700;font-size:17px">Pick one small action</div></div>
+      <div style="padding:22px;border-radius:22px;background:#0E1A14;color:#F2F7F3"><img src="./assets/icons/rocket.png" alt="" style="width:40px;height:40px"><div style="margin-top:10px;font-weight:700;font-size:17px">Repeat until it’s just life</div></div>
+    </div>
+    <dc-import name="PriceCta" deadline="{{ deadline }}" label="START WITH ONE STEP" dark="{{ false }}" expired="{{ offerExpired }}" on-buy="{{ buy }}" hint-size="100%,96px"></dc-import>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section id="offer" data-stage="6" style="position:relative;overflow:hidden;padding:clamp(72px,13vw,112px) 20px;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(110,231,183,0.2),transparent 70%),#0A1310;color:#F2F7F3">
+  {{ offerArt }}
+  <div style="position:relative;z-index:2;max-width:1100px;margin:0 auto">
+    <div style="text-align:center">
+      <div style="display:inline-flex;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#FF8A3D;padding:6px 14px;border-radius:999px;border:1px solid #FF8A3D">TODAY’S OFFER</div>
+      <h2 style="font-family:'Unbounded',sans-serif;font-weight:500;font-size:clamp(28px,4vw,52px);line-height:1.08;letter-spacing:-0.03em;margin:18px auto 0;max-width:800px;text-wrap:balance">The complete Fix the Root package.</h2>
+    </div>
+    <div style="max-width:620px;margin:48px auto 0;padding:1px;border-radius:36px;background:linear-gradient(160deg,#6EE7B7,rgba(110,231,183,0.1) 45%,#FF8A3D)">
+      <div style="border-radius:35px;background:#0C1712;padding:clamp(28px,5vw,48px);text-align:center">
+        <sc-if value="{{ offerLive }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;color:#C2D0C6">PACKAGE VALUE</span>
+            <span style="font-family:'Unbounded',sans-serif;font-size:26px;color:#C2D0C6;text-decoration:line-through;text-decoration-color:#FF8A3D;text-decoration-thickness:2px">₹18,990</span>
+          </div>
+          <div style="font-family:'Unbounded',sans-serif;font-size:clamp(80px,12vw,140px);line-height:1;font-weight:600;margin-top:18px;letter-spacing:-0.05em;color:#6EE7B7;text-shadow:0 0 50px rgba(110,231,183,0.45)">₹390</div>
+          <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:18px">
+            <span style="padding:6px 12px;border-radius:999px;background:rgba(255,138,61,0.16);color:#FFD9C2;font-size:13px;font-weight:700">Save ₹18,600</span>
+            <span style="padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.08);font-size:13px;font-weight:700">One-time payment</span>
+            <span style="padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.08);font-size:13px;font-weight:700">No subscription</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:8px;margin-top:28px;text-align:left">
+            <sc-for list="{{ offerIcons }}" as="o"><div style="display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,0.04);font-size:14px;font-weight:600"><div role="img" aria-hidden="true" style="width:28px;height:28px;flex:none;background:url({{ o.icon }}) center/contain no-repeat"></div>{{ o.t }}</div></sc-for>
+          </div>
+          <div style="margin-top:28px;padding:20px;border-radius:22px;background:rgba(255,61,46,0.08);border:1px solid rgba(255,61,46,0.45)">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#FFB3AC">THIS PRICE DISAPPEARS IN</div>
+            <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px">
+              <sc-for list="{{ timeBlocks }}" as="b" hint-placeholder-count="4"><div style="padding:14px 4px;border-radius:14px;background:#050807;border:1px solid rgba(255,255,255,0.1)"><div style="font-family:'Unbounded',sans-serif;font-size:clamp(26px,7vw,40px);font-weight:600;line-height:1;color:#FFFFFF">{{ b.v }}</div><div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#C2D0C6;margin-top:6px">{{ b.k }}</div></div></sc-for>
+            </div>
+            <div style="margin-top:10px;font-size:13px;color:#E2EBE5">Ends {{ deadlineLabel }}</div>
+          </div>
+          <dc-import name="PriceCta" deadline="{{ deadline }}" label="BUY TODAY" dark="{{ true }}" note="One-time payment · No subscription" expired="{{ offerExpired }}" on-buy="{{ openCheckout }}" hint-size="100%,96px"></dc-import>
+        </sc-if>
+        <sc-if value="{{ offerExpired }}">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#FF8A3D">OFFER ENDED</div>
+          <div style="font-family:'Unbounded',sans-serif;font-size:30px;line-height:1.2;margin-top:12px">The ₹390 offer has ended</div>
+          <div style="margin-top:20px;padding:14px;border:1px dashed rgba(255,138,61,0.6);border-radius:14px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#E2EBE5">[Insert current price + checkout button]</div>
+        </sc-if>
+      </div>
+    </div>
+    <p style="margin:32px auto 0;max-width:560px;text-align:center;font-size:15px;color:#C2D0C6">No miracle promises. Just clear education, practical tools, and a realistic start.</p>
+  </div>
+</section>
+
+<footer style="padding:56px 20px 120px;background:#050807;color:#C2D0C6;font-size:14px;line-height:1.65">
+  <div style="max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:12px">
+    <div style="font-family:'Unbounded',sans-serif;font-size:18px;color:#F2F7F3">Fix the Root, Not the Cause</div>
+    <p style="margin:0;max-width:860px"><strong style="color:#F2F7F3">Important health notice:</strong> An educational lifestyle course — not medical diagnosis, individualized treatment, or a guarantee of outcomes. Don’t stop or change prescribed medication based on the course. Consult a qualified professional before major food or activity changes, especially with an existing condition, regular medication, pregnancy, pain or injury.</p>
+    <p style="margin:0;max-width:860px">Emergency (chest pressure, one-sided weakness, trouble speaking, severe breathlessness, fainting): call 112. Individual outcomes vary.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:12px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08)">
+      <a href="#" style="color:#F2F7F3">Terms</a><a href="#" style="color:#F2F7F3">Privacy</a><a href="#" style="color:#F2F7F3">Refund Policy</a><a href="#" style="color:#F2F7F3">Contact Support</a>
+    </div>
+    <div style="color:#9FB0A5">© [Year] Lavish Pareek / [Business Name]. All rights reserved.</div>
+  </div>
+</footer>
+
+<sc-if value="{{ showSticky }}">
+  <div style="position:fixed;left:12px;right:12px;bottom:12px;z-index:50;max-width:620px;margin:0 auto;background:rgba(10,19,16,0.94);backdrop-filter:blur(12px);border:1px solid rgba(110,231,183,0.35);border-radius:999px;padding:8px 8px 8px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 20px 50px -20px rgba(0,0,0,0.7)">
+    <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+      <span style="font-family:'Unbounded',sans-serif;font-size:16px;font-weight:500;color:#C2D0C6;text-decoration:line-through;text-decoration-color:#FF3D2E;text-decoration-thickness:3px">₹18,990</span>
+      <span style="font-family:'Unbounded',sans-serif;font-size:24px;font-weight:600;color:#6EE7B7;line-height:1">₹390</span>
+      <span style="padding:3px 8px;border-radius:8px;background:#FF3D2E;color:#FFFFFF;font-family:'Unbounded',sans-serif;font-size:12px;font-weight:600">98% OFF</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#FFB3AC">⏱ {{ timeShort }}</span>
+      <sc-if value="{{ stickyWide }}"><span style="font-size:13px;color:#E2EBE5;font-weight:600">Complete package</span></sc-if>
+    </div>
+    <button onClick="{{ openCheckout }}" style="all:unset;cursor:pointer;flex:none;min-height:48px;padding:0 24px;display:flex;align-items:center;background:#FF8A3D;color:#0A0D0C;font-weight:800;letter-spacing:0.06em;border-radius:999px;font-size:14px">BUY NOW</button>
+  </div>
+</sc-if>
+
+<sc-if value="{{ checkoutOpen }}">
+  <div onClick="{{ closeCheckout }}" style="position:fixed;inset:0;z-index:70;background:rgba(5,8,7,0.75);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px">
+    <div onClick="{{ stop }}" style="background:#0A1310;color:#F2F7F3;border:1px solid rgba(110,231,183,0.35);border-radius:32px;width:100%;max-width:500px;max-height:90vh;overflow:auto;padding:clamp(22px,6vw,32px);position:relative;box-shadow:0 40px 100px -30px rgba(110,231,183,0.35)">
+      <button onClick="{{ closeCheckout }}" style="all:unset;cursor:pointer;position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;color:#C2D0C6">✕</button>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#6EE7B7">COMPLETE YOUR ENROLLMENT</div>
+      <div style="font-family:'Unbounded',sans-serif;font-size:22px;font-weight:500;line-height:1.2;margin-top:10px">Fix the Root, Not the Cause</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:6px;margin-top:18px">
+        <sc-for list="{{ offerIcons }}" as="o"><div style="display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,0.04);font-size:13px;font-weight:600"><div role="img" aria-hidden="true" style="width:24px;height:24px;flex:none;background:url({{ o.icon }}) center/contain no-repeat"></div>{{ o.t }}</div></sc-for>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:20px;font-size:14px;color:#C2D0C6"><span>Package value</span><span style="text-decoration:line-through">₹18,990</span></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;padding-top:12px;border-top:1px solid rgba(110,231,183,0.3)"><span style="font-weight:700">Pay today</span><span style="font-family:'Unbounded',sans-serif;font-size:36px;line-height:1;color:#6EE7B7">₹390</span></div>
+      <a href="#checkout" style="display:flex;align-items:center;justify-content:center;min-height:60px;margin-top:20px;background:#FF8A3D;color:#0A0D0C;font-weight:800;font-size:16px;letter-spacing:0.06em;border-radius:999px;text-decoration:none">PAY ₹390 &amp; GET ACCESS</a>
+      <p style="margin:10px 0 0;text-align:center;font-size:12px;color:#C2D0C6">One-time payment · No subscription</p>
+      <p style="margin:12px 0 0;font-size:12px;color:#9FB0A5;line-height:1.5">General education only — not individualized medical advice, diagnosis, or treatment.</p>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;offerDeadline&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2026-10-16T23:59:59+05:30&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Offer&quot;},&quot;offerExpired&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Offer&quot;},&quot;stickyBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Offer&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Interaction&quot;},&quot;journeyAnimation&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Interaction&quot;},&quot;showHud&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Interaction&quot;}}">
+const R = (id, url) => (window.__resources && window.__resources[id]) || url;
+const IC = {
+ salad:R("icon-salad","./assets/icons/salad.png"),
+ runner:R("icon-runner","./assets/icons/runner.png"),
+ moon:R("icon-moon","./assets/icons/moon.png"),
+ lotus:R("icon-lotus","./assets/icons/lotus.png"),
+ steth:R("icon-steth","./assets/icons/steth.png"),
+ biceps:R("icon-biceps","./assets/icons/biceps.png"),
+ chart:R("icon-chart","./assets/icons/chart.png"),
+ clip:R("icon-clip","./assets/icons/clip.png"),
+ cart:R("icon-cart","./assets/icons/cart.png"),
+ camera:R("icon-camera","./assets/icons/camera.png"),
+ cal:R("icon-cal","./assets/icons/cal.png"),
+ note:R("icon-note","./assets/icons/note.png"),
+ spark:R("icon-spark","./assets/icons/spark.png"),
+ broccoli:R("icon-broccoli","./assets/icons/broccoli.png"),
+ apple:R("icon-apple","./assets/icons/apple.png"),
+ egg:R("icon-egg","./assets/icons/egg.png"),
+ avocado:R("icon-avocado","./assets/icons/avocado.png"),
+ carrot:R("icon-carrot","./assets/icons/carrot.png"),
+ banana:R("icon-banana","./assets/icons/banana.png"),
+ shoe:R("icon-shoe","./assets/icons/shoe.png"),
+ clock:R("icon-clock","./assets/icons/clock.png"),
+ leafy:R("icon-leafy","./assets/icons/leafy.png"),
+ heart:R("icon-heart","./assets/icons/heart.png"),
+ bulb:R("icon-bulb","./assets/icons/bulb.png"),
+ phone:R("icon-phone","./assets/icons/phone.png"),
+ check:R("icon-check","./assets/icons/check.png"),
+ droplet:R("icon-droplet","./assets/icons/droplet.png"),
+ weary:R("icon-weary","./assets/icons/weary.png"),
+ spiral:R("icon-spiral","./assets/icons/spiral.png"),
+ cool:R("icon-cool","./assets/icons/cool.png"),
+ bowl:R("icon-bowl","./assets/icons/bowl.png"),
+ milk:R("icon-milk","./assets/icons/milk.png"),
+ lemon:R("icon-lemon","./assets/icons/lemon.png"),
+ flatbread:R("icon-flatbread","./assets/icons/flatbread.png"),
+ cucumber:R("icon-cucumber","./assets/icons/cucumber.png"),
+ books:R("icon-books","./assets/icons/books.png"),
+ seedling:R("icon-seedling","./assets/icons/seedling.png"),
+ trophy:R("icon-trophy","./assets/icons/trophy.png"),
+ tea:R("icon-tea","./assets/icons/tea.png"),
+ sun:R("icon-sun","./assets/icons/sun.png"),
+ rocket:R("icon-rocket","./assets/icons/rocket.png")
+};
+const h = React.createElement;
+const MODULES = [
+ {num:"01",title:"Understand How Health Problems Develop",items:["Feeling healthy vs. knowing your status","How risk factors stack up","What you can and can’t change","Prevention vs. control vs. cure","Why lifestyle + treatment work together"],outcome:"A clear, realistic model of long-term health."},
+ {num:"02",title:"Find Your Most Important Starting Point",items:["Nutrition","Movement & sitting","Sleep","Stress","Tobacco, alcohol, caffeine","Connection","Digital habits","Check-ups"],outcome:"One clear first priority — not an overwhelming list."},
+ {num:"03",title:"The Practical Nutrition Guide",items:["Balanced-plate method","Veg & non-veg protein","Everyday fiber","Liquid sugar","Salt & processed food","Indian meal examples","Smart swaps","Weekly meal planner"],outcome:"Better food decisions — no extreme diet."},
+ {num:"04",title:"The Label-Reading and Grocery Guide",items:["Ingredient order","Hidden names for sugar","Compare per 100 g","Front-of-pack tricks","Practical grocery list"],outcome:"Shop smarter than the marketing."},
+ {num:"05",title:"The Complete Movement Guide",items:["Weekly cardio guidance","Beginner strength","Post-meal walks","Breaking up sitting","Safe progression","Warning signs"],outcome:"A weekly routine that fits your ability."},
+ {num:"06",title:"The No-Equipment Home Workout",items:["Squat","Modified push-up","Reverse lunge","Plank","Glute bridge","Hip hinge","4-week progression"],outcome:"A strength routine — no gym needed."},
+ {num:"07",title:"The Walking Habit System",items:["21-day tracker","Weekly step ramp","Post-meal walk ideas","“Never miss twice” rule","Bad-day minimum"],outcome:"Walking becomes routine, not motivation."},
+ {num:"08",title:"The Sleep Reset",items:["Daily rhythm","Fixed wake time","Morning light","Caffeine timing","Screen wind-down","7-night sleep diary"],outcome:"A repeatable sleep routine."},
+ {num:"09",title:"The Stress Toolkit",items:["Box breathing","The double sigh","5-4-3-2-1 grounding","Phone-free walk","Stress tracking"],outcome:"Tools for everyday tension."},
+ {num:"10",title:"Common Health Conditions Explained Simply",items:["Belly fat & weight","Type 2 diabetes","High BP","Heart disease","Fatty liver","PCOS","Thyroid","Depression & anxiety"],outcome:"Understand the basics — without self-diagnosing."},
+ {num:"11",title:"Know Your Numbers",items:["Blood pressure","Fasting glucose","HbA1c","LDL","Triglycerides","Waist","Resting heart rate","BMI limits"],outcome:"Reports you can actually discuss."},
+ {num:"12",title:"Health Checkup and Doctor-Visit Preparation",items:["Conditions & family history","Medicines & supplements","Recent reports","Symptoms timeline","Questions to ask"],outcome:"Walk into appointments organized."},
+ {num:"13",title:"Seven-Day Starter Challenge",items:["D1 Observe","D2 Short walk","D3 Improve a meal","D4 Wind-down cue","D5 Stress tool","D6 Book care","D7 Review"],outcome:"From information to action."},
+ {num:"14",title:"Your Personal 30-Day Roadmap",items:["3 priority habits","Habit stacking","Obstacle plan","Progress measures","Review dates","Accountability partner"],outcome:"A written plan — not just more info."}
+];
+const STAGES = [
+ {label:"STAGE A · UNDERSTAND & FUEL",icon:IC.salad,range:[0,4],cta:"GET THE FULL COURSE"},
+ {label:"STAGE B · MOVE & RECOVER",icon:IC.runner,range:[4,9],cta:"GET THE STEP-BY-STEP SYSTEM"},
+ {label:"STAGE C · KNOW & ACT",icon:IC.clip,range:[9,14],cta:"START MY 30-DAY PLAN"}
+];
+const STAGE_NAMES = ["CONFUSION","RECOGNITION","UNDERSTANDING","THE JOURNEY","CLARITY","DECISION"];
+const PAINS = ["Wake up tired","Waistline creeping up","Sitting all day","Breathless on stairs","Running on tea, sugar & snacks","Eating while scrolling","Random bedtime","Work stress follows you home","Phone first & last thing","“Borderline” report, no plan","Family history of BP, diabetes, thyroid","Save videos, never follow","Confused: carbs, protein, fasting?","Don’t know where to begin"];
+const AREAS = [
+ {n:1,title:"Food",icon:IC.salad,text:"Balanced meals — without an extreme diet.",mods:"MODULES 03–04"},
+ {n:2,title:"Movement",icon:IC.runner,text:"Strength and activity — without a complicated gym plan.",mods:"MODULES 05–07"},
+ {n:3,title:"Sleep",icon:IC.moon,text:"A realistic rhythm for rest and recovery.",mods:"MODULE 08"},
+ {n:4,title:"Stress",icon:IC.lotus,text:"Simple tools for everyday mental overload.",mods:"MODULE 09"},
+ {n:5,title:"Health awareness",icon:IC.steth,text:"Track what matters. Ask your doctor better questions.",mods:"MODULES 10–12"}
+];
+const OUTCOMES = ["Understand the difference between a symptom, risk factor, cause, and diagnosis","Identify which lifestyle area deserves your attention first","Create a balanced plate using familiar Indian food","Estimate a sensible everyday protein and fiber target","Read ingredient lists and compare packaged foods more intelligently","Reduce liquid sugar and highly processed food without following an extreme diet","Plan simple vegetarian and non-vegetarian meals","Build a weekly movement routine around your present ability","Begin strength training at home using basic movements","Increase walking gradually rather than chasing an unrealistic step target","Create a more consistent sleep and caffeine routine","Use breathing, grounding, outdoor movement, and connection to manage everyday stress","Record relevant health history, family history, medicines, and supplements","Understand commonly discussed measurements such as blood pressure, glucose, HbA1c, cholesterol, triglycerides, waist size, and resting heart rate","Prepare useful questions before visiting a doctor","Select one to three priorities instead of changing everything at once","Complete a seven-day starter challenge","Build a specific 30-day personal roadmap","Recognize situations in which professional or urgent medical care is more important than self-help"];
+const BEFORE = ["“I don’t know where to begin.”","“Every expert says something different.”","“I start five habits and drop all of them.”","“I don’t understand my reports.”","“I don’t know what to ask my doctor.”","“Healthy food must be complicated.”","“Exercise means a gym.”","“I wait for motivation.”"];
+const AFTER = ["“I know what to work on first.”","“I get how food, movement, sleep and stress connect.”","“I have one to three specific actions.”","“I can discuss my numbers confidently.”","“My reports, medicines and questions are organized.”","“I build balanced meals with familiar food.”","“I have a home movement plan.”","“My system doesn’t need perfect motivation.”"];
+const FAQS = [
+ ["Is this medical treatment?","No. It’s a recorded health and lifestyle education course. It does not diagnose, treat, cure, or prevent disease and cannot replace a qualified healthcare professional."],
+ ["Can it diagnose what’s wrong with me?","No. The tools help you organize information and prepare questions. Only a qualified professional can diagnose a condition."],
+ ["I already have a health condition. Can I join?","Yes, for general education — but continue your medical care. Talk to your doctor before big food or exercise changes, especially if you use insulin, glucose-lowering or BP medication, or have heart, kidney, joint, pregnancy, pain or injury concerns."],
+ ["Should I stop my medication once habits improve?","No. Never stop, reduce, or change prescribed medication on your own. Only the prescribing professional should adjust treatment."],
+ ["Is it beginner-friendly?","Yes. It starts from the basics and focuses on small, realistic steps."],
+ ["Do I need a gym?","No. Walking plus a six-move home workout. Discuss any physical limits with a professional."],
+ ["Is the food guidance vegetarian?","Both veg and non-veg — dal, paneer, curd, eggs, chana, rajma, soy, chicken, fish, roti, rice, millet, vegetables, fruit, nuts and seeds."],
+ ["Is it an extreme diet?","No. Balanced meals, enough protein and fiber, fewer sugary drinks, less processed food, realistic portions."],
+ ["How long is the course?","Approximately [confirm exact duration], self-paced."],
+ ["How long do I get access?","[Confirmed access period]."],
+ ["What language is it in?","[Confirmed language]. Downloads in [confirmed language(s)]."],
+ ["Are the guides downloadable?","[Confirm whether guides, trackers and roadmap can be downloaded or printed.]"],
+ ["What are the free secret videos?","A bonus series from Lavish’s years of gym experience — beginner mistakes, workout structure, progression, consistency and recovery. Educational; no fixed “fat to fit” timeline is promised."],
+ ["Will I get personal support?","[Explain support: email, WhatsApp, community, calls, or not included.]"],
+ ["How fast will I see results?","There’s no guaranteed timeline. The immediate goal is clear understanding and a practical action plan."],
+ ["Is there a refund policy?","[Insert verified refund policy and link.]"],
+ ["Is payment secure?","Payments are processed by [verified payment provider]."]
+];
+const pad = i => String(i + 1).padStart(2, "0");
+const STATIC = {
+ vslPoints:[{icon:IC.spiral,t:"Why random tips keep confusing you"},{icon:IC.seedling,t:"The 5 health areas that matter"},{icon:IC.books,t:"What’s inside the course"},{icon:IC.biceps,t:"Your free Fat-to-Fit bonus"}],
+ adviceQuotes:["“Stop eating carbs.”","“Walk 10,000 steps.”","“Take this supplement.”","“Try this detox.”","“Lose weight now.”","“Sleep early.”","“Join a gym.”"].map((t,i)=>({t,r:[-2,1.5,-1,2,-1.5,1,-2.5][i]})),
+ youMayKnow:[{icon:IC.biceps,a:"Exercise matters —",b:"but where do you start?"},{icon:IC.egg,a:"Protein matters —",b:"but how much, in Indian meals?"},{icon:IC.chart,a:"Tests matter —",b:"but which numbers count?"},{icon:IC.phone,a:"Sleep matters —",b:"yet you’re scrolling at midnight."}],
+ symptoms:["Belly fat","Low energy","“Borderline” reports","High BP","Fatty liver","Anxiety"],
+ skills:[{icon:IC.salad,t:"Build a balanced Indian plate"},{icon:IC.cart,t:"Read food labels like a pro"},{icon:IC.biceps,t:"Start strength training at home"},{icon:IC.moon,t:"Reset your sleep rhythm"},{icon:IC.chart,t:"Understand your health numbers"},{icon:IC.clip,t:"Walk into the doctor prepared"}],
+ outcomes:OUTCOMES.map((text,i)=>({n:pad(i),text})),
+ bonusItems:["Gym mistakes that waste time","A realistic beginner routine","How strength, cardio, food & recovery fit","Progress without constant changes","Make every session count","Fat loss while building strength","Measure progress beyond the scale","Stay consistent when motivation dips","When to ease off or get guidance"].map((t,i)=>({n:pad(i),t})),
+ included:[[IC.camera,"Recorded course","~3.5 hours, beginner-friendly."],[IC.salad,"Nutrition guide","Plates, protein, Indian meals."],[IC.shoe,"Workout & walking","6-move home plan + tracker."],[IC.chart,"Numbers guide","BP, sugar, waist — explained."],[IC.steth,"Doctor-visit guide","Walk in organized."],[IC.cal,"7-day + 30-day plan","Lessons turned into action."],[IC.note,"Worksheets & trackers","Print. Tick. Repeat."],[IC.spark,"Fat-to-Fit videos","Free bonus series."]].map(([icon,title,text])=>({icon,title,text})),
+ different:[[IC.seedling,"No perfection needed","Pick 1–3 priorities."],[IC.flatbread,"Familiar Indian food","No imported ingredients."],[IC.shoe,"No gym required","Walking + home moves."],[IC.bulb,"Everything connected","One system, not tips."],[IC.steth,"Works with your doctor","Never replaces care."],[IC.note,"Ends with a written plan","7-day + 30-day."],[IC.biceps,"Real gym lessons","Lavish’s bonus videos."]].map(([icon,title,text])=>({icon,title,text})),
+ forYou:["Want to take health seriously","Overwhelmed by conflicting advice","Family history of BP, diabetes, heart disease","Got “borderline” results","Want better food, sleep & stress habits","Want a home workout plan","Prefer familiar Indian food","Ready for small, steady steps","Will continue medical care"],
+ notFor:["Want an instant cure","Want to stop medicines without your doctor","Expect one diet to fix everything","Want a diagnosis from a course","Won’t take small repeated actions"],
+ testimonials:[{slot:"t1",tag:"Clarity",text:"[Verified testimonial: from confusion to a clear first priority.]"},{slot:"t2",tag:"Practicality",text:"[Verified testimonial: familiar food, home routine, easy to follow.]"},{slot:"t3",tag:"Preparation",text:"[Verified testimonial: doctor-visit guide helped organize reports.]"},{slot:"t4",tag:"Consistency",text:"[Verified testimonial: finished the 7-day challenge, kept habits.]"}],
+ infoBar:[{k:"Created by",v:"Lavish Pareek"},{k:"Format",v:"Recorded + guides"},{k:"Language",v:"[Confirm]"},{k:"Duration",v:"[Confirm]"},{k:"Access",v:"[Confirm]"},{k:"Support",v:"[Confirm]"}],
+ offerIcons:[[IC.camera,"Recorded course"],[IC.salad,"Nutrition guide"],[IC.cart,"Grocery & label guide"],[IC.biceps,"Home workout"],[IC.shoe,"Walking system"],[IC.moon,"Sleep reset"],[IC.lotus,"Stress toolkit"],[IC.chart,"Number tracker"],[IC.steth,"Doctor-visit prep"],[IC.cal,"7-day challenge"],[IC.note,"30-day roadmap"],[IC.spark,"Fat-to-Fit videos"]].map(([icon,t])=>({icon,t}))
+};
+
+const floater = (src, o, i) => h("img", { key: "f" + i, src, alt: "", style: { position: "absolute", left: o.x, top: o.y, width: o.s, height: o.s, opacity: o.op ?? 1, filter: "drop-shadow(0 24px 30px rgba(0,0,0,0.55))", "--r": o.r + "deg", animation: `floatY ${o.d}s ease-in-out ${o.delay}s infinite`, pointerEvents: "none" } });
+const dumbbell = (o, k) => {
+  const plate = (w, hh) => h("div", { style: { width: w, height: hh, borderRadius: 8, background: "linear-gradient(180deg,#3A4A42,#141B17 70%)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.25), inset 0 0 0 1px rgba(110,231,183,0.35)" } });
+  return h("div", { key: k, style: { position: "absolute", left: o.x, top: o.y, transform: `scale(${o.sc})`, transformOrigin: "left top", pointerEvents: "none", opacity: o.op ?? 1 } },
+    h("div", { style: { display: "flex", alignItems: "center", gap: 3, "--r": o.r + "deg", animation: `floatY ${o.d}s ease-in-out ${o.delay}s infinite`, filter: "drop-shadow(0 24px 30px rgba(0,0,0,0.6))" } },
+      plate(20, 74), plate(16, 58), h("div", { style: { width: 96, height: 12, borderRadius: 6, background: "linear-gradient(180deg,#E8EEEA,#7E8F84)" } }), plate(16, 58), plate(20, 74)));
+};
+
+class Component extends DCLogic {
+  state = { now: Date.now(), checked: {}, openMods: { "01": true }, openFaq: { 0: true }, area: 0, ba: "before", pastHero: false, checkout: false, progress: 0, stage: 1, lit: {}, fill: 0, endLit: false, wide: true, vw: 1440, scrolled: false, outcomesOpen: false };
+  componentDidMount() {
+    let raf = 0;
+    const tick = () => {
+      raf = 0;
+      const vh = window.innerHeight, de = document.documentElement;
+      const progress = Math.round(Math.min(1, Math.max(0, window.scrollY / Math.max(1, de.scrollHeight - vh))) * 100);
+      let stage = 1;
+      document.querySelectorAll("[data-stage]").forEach(el => { if (el.getBoundingClientRect().top < vh * 0.5) stage = +el.getAttribute("data-stage"); });
+      const lit = {}; let endLit = false;
+      document.querySelectorAll("[data-node]").forEach(el => { if (el.getBoundingClientRect().top < vh * 0.62) { const k = el.getAttribute("data-node"); if (k === "end") endLit = true; else lit[k] = true; } });
+      const j = document.getElementById("journey"); let fill = 0;
+      if (j) { const r = j.getBoundingClientRect(); fill = Math.round(Math.min(1, Math.max(0, (vh * 0.62 - r.top) / r.height)) * 100); }
+      const pastHero = window.scrollY > 900;
+      const vw = window.innerWidth, wide = vw >= 820, scrolled = window.scrollY > 140;
+      const s = this.state;
+      if (progress !== s.progress || stage !== s.stage || fill !== s.fill || endLit !== s.endLit || pastHero !== s.pastHero || wide !== s.wide || vw !== s.vw || scrolled !== s.scrolled || Object.keys(lit).length !== Object.keys(s.lit).length)
+        this.setState({ progress, stage, lit, fill, endLit, pastHero, wide, vw, scrolled });
+    };
+    this.onScroll = () => { if (!raf) raf = requestAnimationFrame(tick); };
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    window.addEventListener("resize", this.onScroll);
+    tick();
+    this.clock = setInterval(() => this.setState({ now: Date.now() }), 1000);
+  }
+  
+  componentWillUnmount() { clearInterval(this.clock); window.removeEventListener("scroll", this.onScroll); window.removeEventListener("resize", this.onScroll); }
+  heroArt(vw) {
+    const gutter = (vw - 1000) / 2;
+    const big = gutter >= 150, mid = gutter >= 70;
+    const op = big ? 1 : mid ? 0.55 : 0.22;
+    const k = big ? 1 : mid ? 0.7 : 0.55;
+    const items = [
+      [IC.broccoli,{side:"l",off:"1.5%",y:"8%",s:110,r:-14,d:7,delay:0}], [IC.apple,{side:"r",off:"2%",y:"6%",s:92,r:10,d:6,delay:.6}],
+      [IC.egg,{side:"l",off:"5%",y:"26%",s:70,r:12,d:8,delay:1.2}], [IC.avocado,{side:"r",off:"4%",y:"24%",s:92,r:-10,d:7.5,delay:.3}],
+      [IC.carrot,{side:"l",off:"1%",y:"42%",s:86,r:24,d:6.5,delay:.9}], [IC.banana,{side:"r",off:"1%",y:"44%",s:84,r:-18,d:8,delay:1.5}],
+      [IC.leafy,{side:"l",off:"3%",y:"88%",s:64,r:16,d:7,delay:1.8}], [IC.milk,{side:"r",off:"3%",y:"88%",s:60,r:6,d:6,delay:2.1}]
+    ];
+    const el = (src, o, i) => h("img", { key: "f" + i, src, alt: "", style: { position: "absolute", [o.side === "l" ? "left" : "right"]: o.off, top: o.y, width: o.s * k, height: o.s * k, opacity: op, filter: "drop-shadow(0 24px 30px rgba(0,0,0,0.55))", "--r": o.r + "deg", animation: `floatY ${o.d}s ease-in-out ${o.delay}s infinite`, pointerEvents: "none" } });
+    const db = (side, off, y, sc, r, d, delay, key) => h("div", { key, style: { position: "absolute", [side]: off, top: y, transform: `scale(${sc * k})`, transformOrigin: side === "left" ? "left top" : "right top", pointerEvents: "none", opacity: op } },
+      h("div", { style: { display: "flex", alignItems: "center", gap: 3, "--r": r + "deg", animation: `floatY ${d}s ease-in-out ${delay}s infinite`, filter: "drop-shadow(0 24px 30px rgba(0,0,0,0.6))" } },
+        ...[[20,74],[16,58],null,[16,58],[20,74]].map((p, i) => p ? h("div", { key: i, style: { width: p[0], height: p[1], borderRadius: 8, background: "linear-gradient(180deg,#3A4A42,#141B17 70%)", boxShadow: "inset 0 1px 0 rgba(255,255,255,0.25), inset 0 0 0 1px rgba(110,231,183,0.35)" } }) : h("div", { key: i, style: { width: 96, height: 12, borderRadius: 6, background: "linear-gradient(180deg,#E8EEEA,#7E8F84)" } }))));
+    return h("div", { "aria-hidden": true, style: { position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none" } },
+      ...items.map(([src, o], i) => el(src, o, i)),
+      db("right", "1%", "62%", 0.8, -22, 8, .5, "d1"), db("left", "0.5%", "66%", 0.7, 28, 9, 1.1, "d2"));
+  }
+  renderVals() {
+    const s = this.state, p = this.props;
+    const deadline = p.offerDeadline ?? "2026-10-16T23:59:59+05:30";
+    const left = Math.max(0, Date.parse(deadline) - s.now);
+    const expired = !!p.offerExpired || left <= 0;
+    const t = Math.floor(left / 1000), dd = Math.floor(t / 86400), hh = Math.floor(t % 86400 / 3600), mm = Math.floor(t % 3600 / 60), ss = t % 60;
+    const z = n => String(n).padStart(2, "0");
+    const flip = (key, k) => () => this.setState(st => ({ [key]: { ...st[key], [k]: !st[key][k] } }));
+    const count = Object.values(s.checked).filter(Boolean).length;
+    const after = s.ba === "after";
+    const anim = p.journeyAnimation ?? true;
+    const openCheckout = () => this.setState({ checkout: true });
+    const toOffer = () => { const el = document.getElementById("offer"); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: "smooth" }); };
+    const motion = p.motion ?? true;
+    return {
+      ...STATIC,
+      deadline,
+      timeShort: `${dd}d ${z(hh)}:${z(mm)}:${z(ss)}`,
+      timeBlocks: [{ k: "DAYS", v: z(dd) }, { k: "HOURS", v: z(hh) }, { k: "MINS", v: z(mm) }, { k: "SECS", v: z(ss) }],
+      deadlineLabel: new Date(Date.parse(deadline)).toLocaleString("en-IN", { timeZone: "Asia/Kolkata", weekday: "short", day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }) + " IST",
+      heroArt: motion ? this.heroArt(s.vw) : null,
+      offerArt: motion && s.vw >= 1180 ? h("div", { "aria-hidden": true, style: { position: "absolute", inset: 0, zIndex: 1, pointerEvents: "none" } },
+        floater(IC.spark, { x: "2%", y: "44%", s: s.wide ? 80 : 44, r: 0, d: 6, delay: 0, op: s.wide ? 1 : .4 }, 1), floater(IC.trophy, { x: "90%", y: "40%", s: s.wide ? 96 : 50, r: 10, d: 7, delay: .8, op: s.wide ? 1 : .4 }, 2),
+        floater(IC.seedling, { x: "3%", y: "76%", s: s.wide ? 72 : 40, r: -8, d: 8, delay: 1.4, op: s.wide ? 1 : .4 }, 3), floater(IC.rocket, { x: "90%", y: "74%", s: s.wide ? 80 : 44, r: -20, d: 6.5, delay: .4, op: s.wide ? 1 : .4 }, 4)) : null,
+      bonusArt: [h("img", { key: 1, src: IC.camera, alt: "", style: { width: 96, height: 96, animation: motion ? "floatY 7s ease-in-out infinite" : "none", "--r": "-8deg" } }), h("img", { key: 2, src: IC.biceps, alt: "", style: { width: 110, height: 110, animation: motion ? "floatY 6s ease-in-out .6s infinite" : "none", "--r": "6deg" } })],
+      playButton: h("div", { style: { width: 92, height: 92, borderRadius: "50%", background: "#6EE7B7", display: "flex", alignItems: "center", justifyContent: "center", color: "#090C0B", fontSize: 30, paddingLeft: 6, animation: motion ? "pulseRing 2s ease-out infinite" : "none", boxShadow: "0 0 60px rgba(110,231,183,0.5)" } }, "▶"),
+      marquee: h("div", { style: { display: "flex", width: "max-content", animation: motion ? "marquee 40s linear infinite" : "none" } },
+        ...[0, 1].map(r => h("div", { key: r, style: { display: "flex", gap: 40, paddingRight: 40, alignItems: "center" } },
+          ...[[IC.seedling,"Beginner-friendly lessons"],[IC.flatbread,"Built around Indian meals"],[IC.biceps,"Home workouts, no gym"],[IC.camera,"Free Fat-to-Fit videos"],[IC.steth,"Doctor-visit preparation"],[IC.books,"Evidence-informed"],[IC.check,"No miracle-cure promises"]].map(([src, t], i) =>
+            h("div", { key: i, style: { display: "flex", alignItems: "center", gap: 10, fontSize: 15, fontWeight: 700, color: "#F2F7F3", whiteSpace: "nowrap" } }, h("img", { src, alt: "", style: { width: 30, height: 30 } }), t))))),
+      progressPct: s.progress, showHud: (p.showHud ?? true) && s.wide && s.scrolled,
+      stageNum: "0" + s.stage, stageName: STAGE_NAMES[s.stage - 1],
+      checkedCount: String(count).padStart(2, "0"), checkedPct: Math.round(count / 14 * 100),
+      signalFace: count === 0 ? IC.bulb : count < 4 ? IC.weary : IC.spiral,
+      signalMsg: count === 0 ? "Tap what applies to you." : count < 4 ? "A few signals. A simple system helps." : "Not failure — you just need a simpler system.",
+      pains: PAINS.map((text, i) => { const on = !!s.checked[i];
+        return { text, toggle: flip("checked", i), mark: on ? "✓" : "", bg: on ? "rgba(110,231,183,0.14)" : "rgba(255,255,255,0.04)", border: on ? "#6EE7B7" : "rgba(255,255,255,0.14)", color: on ? "#FFFFFF" : "#E2EBE5", boxBg: on ? "#6EE7B7" : "transparent", boxBorder: on ? "#6EE7B7" : "rgba(255,255,255,0.4)" }; }),
+      fiveAreas: AREAS.map((a, i) => { const on = s.area === i;
+        return { ...a, select: () => this.setState({ area: i }), size: on ? 64 : 48, bg: on ? "rgba(110,231,183,0.16)" : "rgba(255,255,255,0.04)", border: on ? "#6EE7B7" : "rgba(255,255,255,0.12)", glow: on ? "0 0 0 4px rgba(110,231,183,0.14), 0 0 40px -6px rgba(110,231,183,0.55)" : "none" }; }),
+      activeArea: AREAS[s.area],
+      outcomesOpen: s.outcomesOpen, outcomesBtn: s.outcomesOpen ? "− HIDE THE FULL LIST" : "+ SEE ALL 19 SKILLS", toggleOutcomes: () => this.setState({ outcomesOpen: !s.outcomesOpen }),
+      stages: STAGES.map(g => ({ ...g, mods: MODULES.slice(g.range[0], g.range[1]).map(m => {
+        const open = !!s.openMods[m.num], on = !anim || !!s.lit[m.num];
+        return { ...m, open, sign: open ? "−" : "+", toggle: flip("openMods", m.num),
+          dotBg: on ? "#6EE7B7" : "#0F2219", dotBorder: on ? "#6EE7B7" : "rgba(255,255,255,0.25)", dotText: on ? "#090C0B" : "#C2D0C6",
+          dotGlow: on ? "0 0 0 6px rgba(110,231,183,0.14), 0 0 28px rgba(110,231,183,0.55)" : "none",
+          cardBg: on ? "rgba(255,255,255,0.055)" : "rgba(255,255,255,0.02)", cardBorder: on ? "rgba(110,231,183,0.4)" : "rgba(255,255,255,0.08)" }; }) })),
+      journeyFill: anim ? s.fill : 100,
+      endDotBg: (!anim || s.endLit) ? "#FF8A3D" : "#24342C", endDotGlow: (!anim || s.endLit) ? "0 0 0 6px rgba(255,138,61,0.2), 0 0 30px rgba(255,138,61,0.6)" : "none",
+      showBefore: () => this.setState({ ba: "before" }), showAfter: () => this.setState({ ba: "after" }), flipBA: () => this.setState({ ba: after ? "before" : "after" }),
+      beforeTabBg: after ? "transparent" : "#F2F7F3", beforeTabColor: after ? "#F2F7F3" : "#0E1A14",
+      afterTabBg: after ? "#6EE7B7" : "transparent", afterTabColor: after ? "#0E1A14" : "#F2F7F3",
+      baItems: after ? AFTER : BEFORE, baFace: after ? IC.cool : IC.weary,
+      baCardBg: after ? "#FFFFFF" : "#0A1310", baCardBorder: after ? "#6EE7B7" : "rgba(255,255,255,0.12)",
+      baCardGlow: after ? "0 0 0 6px rgba(110,231,183,0.22), 0 40px 80px -30px rgba(31,90,67,0.6)" : "0 40px 80px -30px rgba(0,0,0,0.6)",
+      baLabel: after ? "After the course" : "Before the course", baFlipText: after ? "← SEE BEFORE" : "FLIP TO AFTER →",
+      baText: after ? "#0E1A14" : "#E2EBE5", baLine: after ? "#E3E8E3" : "rgba(255,255,255,0.1)", baMark: after ? "✓" : "✕", baMarkColor: after ? "#1F5A43" : "#FF8A3D",
+      faqs: FAQS.map(([q, a], i) => { const open = !!s.openFaq[i]; return { q, a, open, sign: open ? "−" : "+", toggle: flip("openFaq", i), bg: open ? "#FFFFFF" : "rgba(255,255,255,0.6)", border: open ? "#1F5A43" : "#D5DDD5", signBg: open ? "#1F5A43" : "#E3E8E3", signColor: open ? "#FFFFFF" : "#0E1A14" }; }),
+      offerLive: !expired, offerExpired: expired,
+      buy: expired ? toOffer : openCheckout, openCheckout,
+      stickyWide: s.vw >= 480,
+      showSticky: (p.stickyBar ?? true) && !expired && s.pastHero && !s.checkout,
+      checkoutOpen: s.checkout, closeCheckout: () => this.setState({ checkout: false }), stop: e => e.stopPropagation()
+    };
+  }
+}
+</script>
+</body>
+</html>
 
